@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Priyanka Beauty Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    /* Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap');
+
+    /* Color scheme */
+    :root {
+      --soft-pink: #f8d7da;
+      --gold: #c59d5f;
+      --pink-text: #b3505a;
+      --white: #fff;
+      --gray-light: #f7f7f7;
+      --gray-dark: #555;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--white);
+      color: var(--gray-dark);
+      scroll-behavior: smooth;
+      padding-top: 70px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      color: var(--pink-text);
+    }
+
+    a.nav-link:hover,
+    a.nav-link:focus {
+      color: var(--gold) !important;
+      text-decoration: none;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--white);
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1030;
+    }
+
+    /* Hero */
+    #hero {
+      background: linear-gradient(rgba(248,215,218,0.7), rgba(248,215,218,0.7)), url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--pink-text);
+      padding: 0 1rem;
+    }
+
+    #hero .container {
+      max-width: 700px;
+      background-color: rgba(255,255,255,0.85);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgb(197 157 95 / 0.3);
+    }
+
+    #hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    #hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    #hero .btn {
+      background-color: var(--gold);
+      color: var(--white);
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    #hero .btn:hover,
+    #hero .btn:focus {
+      background-color: #b38629;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 15px;
+    }
+
+    /* About */
+    #about img {
+      max-width: 280px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgb(197 157 95 / 0.3);
+    }
+
+    /* Services */
+    .service-card {
+      border: 1px solid var(--soft-pink);
+      border-radius: 15px;
+      padding: 20px;
+      background-color: var(--gray-light);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 10px 20px rgb(197 157 95 / 0.4);
+      cursor: default;
+    }
+
+    .service-price {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-top: 10px;
+    }
+
+    /* Gallery */
+    #gallery img {
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgb(197 157 95 / 0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      max-width: 100%;
+    }
+
+    #gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Testimonials */
+    #testimonials .carousel-indicators [data-bs-target] {
+      background-color: var(--pink-text);
+    }
+
+    #testimonials .carousel-item {
+      color: var(--pink-text);
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+
+    #testimonials .testimonial-text {
+      margin-bottom: 1rem;
+    }
+
+    #testimonials .testimonial-author {
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Contact */
+    #contact iframe {
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgb(197 157 95 / 0.3);
+      width: 100%;
+      height: 250px;
+      border: 0;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--soft-pink);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      color: var(--pink-text);
+      font-weight: 600;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 576px) {
+      #hero h1 {
+        font-size: 2.5rem;
+      }
+
+      #about img {
+        margin-bottom: 2rem;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+  <div class="container">
+    <a class="navbar-brand text-gold fw-bold" href="#hero" style="color: var(--pink-text); font-family: 'Playfair Display', serif;">
+      Priyanka Beauty Studio
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-pink" href="#hero">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-pink" href="#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-pink" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link text-pink" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link text-pink" href="#testimonials">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link text-pink" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero" aria-label="Hero section introducing Bella’s Beauty Studio">
+  <div class="container">
+    <h1>Welcome to Priyanka Beauty Studio</h1>
+    <p>Your local beauty salon for premium beauty services – hair styling, makeup, facials, and bridal packages.</p>
+    <a href="#contact" class="btn">Book an Appointment</a>
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about" class="container" aria-label="About Bella’s Beauty Studio">
+  <div class="row align-items-center">
+    <div class="col-md-5 mb-4">
+      <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=500&q=80" alt="Owner of Bella's Beauty Studio" />
+    </div>
+    <div class="col-md-7">
+      <h2>About Us</h2>
+      <p>Priyanka Beauty Studio is a boutique salon located in Dwarka , Delhi, founded by Priyanka herself, who brings personal touch and expert styling to every client. Our mission is to provide relaxing, high-quality beauty services tailored for your unique style and special occasions.</p>
+      <p>Our team of skilled professionals is passionate about making you look and feel your best, whether it’s for everyday elegance or your big day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="bg-light" aria-label="Services offered by Bella’s Beauty Studio">
+  <div class="container">
+    <h2 class="mb-5 text-center">Our Services</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="service-card p-4 h-100">
+          <h4>Hair Styling</h4>
+          <p>Professional cuts, coloring, and styling tailored to your personality and occasion.</p>
+          <div class="service-price">300-1000</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card p-4 h-100">
+          <h4>Makeup</h4>
+          <p>Elegant makeup application for everyday looks or special events like weddings and parties.</p>
+          <div class="service-price">500-5000</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card p-4 h-100">
+          <h4>Facials</h4>
+          <p>Relaxing facial treatments to cleanse, nourish, and rejuvenate your skin.</p>
+          <div class="service-price">400-3500</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card p-4 h-100">
+          <h4>Bridal Packages</h4>
+          <p>Comprehensive beauty services customized for brides-to-be on their special day.</p>
+          <div class="service-price">Starting at 5000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="container" aria-label="Gallery of Bella’s Beauty Studio's work">
+  <h2 class="text-center mb-5">Gallery</h2>
+  <div class="row g-3">
+    <div class="col-6 col-md-4 col-lg-3">
+      <img src="c:\Users\91770\Downloads\New folder\PBS iimb image 1.jpg" alt="Before and after hair styling" class="img-fluid gallery-img" />
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <img src="c:\Users\91770\Downloads\New folder\PBS iimb image 2 .jpg" alt="Bridal makeup showcase" class="img-fluid gallery-img" />
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <img src="c:\Users\91770\Downloads\New folder\PBS iimb image 3 .jpg" alt="Hair styling example" class="img-fluid gallery-img" />
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <img src="c:\Users\91770\Downloads\New folder\PBS iimb image 4.jpg" alt="Makeup application" class="img-fluid gallery-img" />
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="bg-light py-5" aria-label="Customer testimonials">
+  <div class="container">
+    <h2 class="text-center mb-5">What Our Clients Say</h2>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-inner">
+        <div class="carousel-item active text-center">
+          <p class="testimonial-text">"Priyanka Beauty Studio transformed my look for my wedding day! The team was attentive and made everything perfect."</p>
+          <div class="testimonial-author">- Simmi</div>
+        </div>
+        <div class="carousel-item text-center">
+          <p class="testimonial-text">"I love the personalized service and relaxed atmosphere. Always leave feeling beautiful and refreshed."</p>
+          <div class="testimonial-author">- Anushka</div>
+        </div>
+        <div class="carousel-item text-center">
+          <p class="testimonial-text">"Professional and friendly staff, great prices, and amazing results every time. Highly recommend!"</p>
+          <div class="testimonial-author">- Rashmi</div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" aria-label="Previous testimonial">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" aria-label="Next testimonial">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="container" aria-label="Contact Bella’s Beauty Studio">
+  <h2 class="mb-4 text-center">Get In Touch</h2>
+  <div class="row g-4">
+    <div class="col-md-6">
+      <form action="https://formspree.io/f/mwkajnwl" method="POST" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name <span aria-hidden="true" style="color: var(--gold)">*</span></label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required />
+          <div class="invalid-feedback">Please enter your name.</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email <span aria-hidden="true" style="color: var(--gold)">*</span></label>
+          <input type="email" class="form-control" id="email" name="_replyto" placeholder="you@example.com" required />
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message <span aria-hidden="true" style="color: var(--gold)">*</span></label>
+          <textarea class="form-control" id="message" name="message" rows="4" placeholder="Your message" required></textarea>
+          <div class="invalid-feedback">Please enter your message.</div>
+        </div>
+        <button type="submit" class="btn btn-gold w-100" style="background-color: var(--gold); color: var(--white);">Send Message</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div class="mb-3">
+        <h5>Business Hours</h5>
+        <p>Monday - Friday: 9:00 AM - 7:00 PM<br />Saturday: 10:00 AM - 5:00 PM<br />Sunday: Closed</p>
+      </div>
+      <div class="mb-3">
+        <h5>Location</h5>
+        <address>E - 300 ,Sector 13, Dwarka<br />Delhi, Delhi 110078</address>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 Priyanka Beauty Studio. All rights reserved.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Bootstrap form validation
+  (() => {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>
+</body>
+</html>
+
